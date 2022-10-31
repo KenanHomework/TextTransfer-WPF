@@ -1,0 +1,46 @@
+﻿<Application x:Class="TextTransfer_WPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TextTransfer_WPF"
+             StartupUri="MVVM/Views/TransferWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+
+                    <!-- rgba(25,25,25,255) -->
+                    <SolidColorBrush x:Key="MainDark_clr"   Color="#191919"/>
+
+                    <!-- rgb(30,30,30) -->
+                    <SolidColorBrush x:Key="SecondDark_clr" Color="#1e1e1e"/>
+
+                    <!-- rgb(85,85,85) -->
+                    <SolidColorBrush x:Key="MainLight_clr"  Color="#555555"/>
+
+                    <!-- rgb(119,119,119) -->
+                    <SolidColorBrush x:Key="SecondLight_clr"  Color="#777777"/>
+
+                    <!-- rgba(196,43,28,255) -->
+                    <SolidColorBrush x:Key="Red_clr"  Color="#c42b1c"/>
+
+                </ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+
+
+                <!--<ResourceDictionary Source="Styles/TooltipStyle.xaml"/>
+                <ResourceDictionary Source="Styles/ScrollBarStyle.xaml"/>
+                <ResourceDictionary Source="Styles/FontStyle.xaml"/>
+                <ResourceDictionary Source="Styles/ToglebuttonStyle.xaml"/>
+                <ResourceDictionary Source="Styles/BlacklistListItemStyle.xaml"/>
+                <ResourceDictionary Source="Styles/ProcessCard.xaml"/>-->
+
+                <ResourceDictionary Source="Styles/ButtonStyle.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+
+</Application>

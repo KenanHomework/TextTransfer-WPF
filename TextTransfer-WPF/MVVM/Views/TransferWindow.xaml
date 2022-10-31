@@ -1,0 +1,179 @@
+﻿<Window x:Class="TextTransfer_WPF.MVVM.Views.TransferWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TextTransfer_WPF.MVVM.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Icon="https://res.cloudinary.com/kysbv/image/upload/v1666556490/General/process_icon.png"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        Title="Text Transfer" Height="400" Width="600">
+
+    <Border BorderThickness="0.3" CornerRadius="15" Background="{StaticResource MainDark_clr}">
+        <DockPanel>
+
+            <!--#region Title Bar-->
+            <Border Background="{StaticResource SecondDark_clr}" DockPanel.Dock="Top" CornerRadius="15 15 0 0" Height="25" MouseDown="Border_MouseDown">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width  ="45"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+
+                    <Image Grid.Column="0" Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="20 0 0 0"
+                 Source="https://res.cloudinary.com/kysbv/image/upload/v1666556490/General/process_icon.png"/>
+
+                    <Label Grid.Column="1" Foreground="#f0f4fd" Margin="2 0"  FontWeight="SemiBold" Content="Text Transfer"/>
+
+                    <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 10 0">
+                        <Button Background="Transparent" BorderThickness="0" Width="40" Foreground="#f0f4fd" VerticalAlignment="Center" Content="_" Padding="0 0 0 8" Height="25" Click="ResizeButton_Click" 
+                         BorderBrush="{StaticResource MainLight_clr}"
+                         Style="{StaticResource MaterialDesignPaperSecondaryLightButton}" >
+
+
+                        </Button>
+
+                        <Button Background="Transparent" BorderThickness="0" Width="40" Height="25" Foreground="#f0f4fd" FontSize="10" VerticalAlignment="Center" Content="X" FontWeight="Bold" Click="ResizeButton_Click"
+                        BorderBrush="{StaticResource Red_clr}"
+                         Style="{StaticResource MaterialDesignPaperSecondaryLightButton}"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!--#endregion-->
+
+            
+            <!--#region AppView-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+            
+                <!--#region From-->
+
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+
+                    <!-- Info -->
+                    <Label Content="From" Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="0" Width="60" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 5 0 0"/>
+
+
+                    <!-- FileName -->
+                    <TextBlock Foreground="Aqua"
+                               Text="{Binding OpenPath,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                               FontSize="17" FontFamily="Lucida Console"
+                                Grid.Row="1" Background="{StaticResource SecondLight_clr}" TextAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" FontWeight="Heavy" 
+                                Margin="20 5 0 0" Width="400" Name="From"/>
+
+
+                    <!-- Action Button -->
+                    <Button  Margin="10 0 0 0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignPaperSecondaryLightButton}" Height="35" Background="Transparent" Name="Open" Command="{Binding OpenCommand}" Padding="0" IsEnabled="True" Opacity="1" BorderThickness="0" Cursor="Hand" BorderBrush="{StaticResource SecondLight_clr}"
+                      materialDesign:ButtonAssist.CornerRadius="5" Width="90">
+                        <StackPanel Orientation="Horizontal" Opacity="1">
+                            <materialDesign:PackIcon Kind="FileSend" Width="20" Height="20" Margin="5 0"
+                        VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#c7c7c7"/>
+
+                            <Label Content="Open" Foreground="#c7c7c7" Opacity="1" FontSize="16"
+                         FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+                
+                <!--#endregion-->
+                
+                <!--#region To-->
+
+                <StackPanel Grid.Row="1" Orientation="Horizontal">
+
+                    <!-- Info -->
+                    <Label Content="To" Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="0" Width="60" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 5 0 0"/>
+
+
+                    <!-- FileName -->
+                    <TextBlock Foreground="Aqua" FontSize="17" FontFamily="Lucida Console"
+                               Text="{Binding SavePath,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                                Grid.Row="1" Background="{StaticResource SecondLight_clr}" TextAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" FontWeight="Heavy" 
+                                Margin="20 5 0 0" Width="400" Name="To"/>
+
+
+                    <!-- Action Button -->
+                    <Button  Margin="10 0 0 0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignPaperSecondaryLightButton}" Height="35" Background="Transparent" Name="Save" Command="{Binding SaveCommand}" Padding="0" IsEnabled="True" Opacity="1" BorderThickness="0" Cursor="Hand" BorderBrush="{StaticResource SecondLight_clr}"
+                      materialDesign:ButtonAssist.CornerRadius="5" Width="90">
+                        <StackPanel Orientation="Horizontal" Opacity="1">
+                            <materialDesign:PackIcon Kind="FileStar" Width="20" Height="20" Margin="5 0"
+                        VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#c7c7c7"/>
+
+                            <Label Content="Save" Foreground="#c7c7c7" Opacity="1" FontSize="16"
+                         FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+
+
+                <!--#endregion-->
+                    
+                <!--#region Progress-->
+
+                <ProgressBar Grid.Row="2" Name="Progress" Height="20" />
+
+                <!--#endregion-->
+                
+                <!--#region Action-->
+
+                <StackPanel Orientation="Horizontal" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                    <Button  Margin="10 0 0 0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignPaperSecondaryLightButton}" Height="35" Background="Transparent" Name="Suspend" Command="{Binding SuspendCommand}" Padding="0" IsEnabled="False" Opacity="1" BorderThickness="0" Cursor="Hand" BorderBrush="{StaticResource SecondLight_clr}"
+                      materialDesign:ButtonAssist.CornerRadius="5" Width="100">
+                        <StackPanel Orientation="Horizontal" Opacity="1">
+                            <materialDesign:PackIcon Kind="PauseCircle" Width="20" Height="20" Margin="5 0"
+                        VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#c7c7c7"/>
+
+                            <Label Content="Suspend" Foreground="#c7c7c7" Opacity="1" FontSize="16"
+                         FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button  Margin="10 0 0 0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignPaperSecondaryLightButton}" Height="35" Background="Transparent" Name="Resume" Command="{Binding ResumeCommand}" Padding="0" IsEnabled="False" Opacity="1" BorderThickness="0" Cursor="Hand" BorderBrush="{StaticResource SecondLight_clr}"
+                      materialDesign:ButtonAssist.CornerRadius="5" Width="100">
+                        <StackPanel Orientation="Horizontal" Opacity="1">
+                            <materialDesign:PackIcon Kind="ArrowRightDropCircle" Width="20" Height="20" Margin="5 0"
+                        VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#c7c7c7"/>
+
+                            <Label Content="Resume" Foreground="#c7c7c7" Opacity="1" FontSize="16"
+                         FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button  Margin="10 0 0 0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignPaperSecondaryLightButton}" Height="35" Background="Transparent" Name="Start" Command="{Binding StartCommand}" Padding="0" IsEnabled="True" Opacity="1" BorderThickness="0" Cursor="Hand" BorderBrush="{StaticResource SecondLight_clr}"
+                      materialDesign:ButtonAssist.CornerRadius="5" Width="90">
+                        <StackPanel Orientation="Horizontal" Opacity="1">
+                            <materialDesign:PackIcon Kind="RayStartArrow" Width="20" Height="20" Margin="5 0"
+                        VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#c7c7c7"/>
+
+                            <Label Content="Start" Foreground="#c7c7c7" Opacity="1" FontSize="16"
+                         FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+                
+                <!--#endregion-->
+                
+            </Grid>     
+            <!--#endregion-->
+
+        </DockPanel>
+    </Border>
+</Window>
